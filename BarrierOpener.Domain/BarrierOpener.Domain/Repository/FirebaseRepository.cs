@@ -8,9 +8,9 @@ public class FirebaseRepository : IFirebaseRepository
 {
     private readonly FirebaseClient _firebaseClient;
 
-    public FirebaseRepository()
+    public FirebaseRepository(IFirebaseConfiguration configuration)
     {
-        _firebaseClient = new FirebaseClient(baseUrl: "https://barrieropener-default-rtdb.firebaseio.com/");
+        _firebaseClient = new FirebaseClient(baseUrl: configuration.FirebaseDataBaseUrl);
     }
 
     public void RegisterObserver<T>(string resourceName, Func<T, bool> messageHandler)

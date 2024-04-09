@@ -1,13 +1,11 @@
-﻿using System.Reflection;
-using BarrierOpener.Domain.Configuration;
-using BarrierOpener.Domain.Core;
+﻿using BarrierOpener.Domain.Core;
 using BarrierOpener.Domain.Repository;
-using BarrierOpener.Server.Core;
-using BarrierOpener.Server.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
+using BarrierOpener.Domain.Configuration;
 
-namespace BarrierOpener.Server;
+namespace BarrierOpener.Client;
 
 public static class MauiProgram
 {
@@ -23,9 +21,8 @@ public static class MauiProgram
             })
             .BuildConfiguration();
 
-        builder.Services.AddTransient<IPhoneDialerService, PhoneDialerService>();
-        builder.Services.AddTransient<IFirebaseRepository, FirebaseRepository>();
-        builder.Services.AddTransient<IFirebaseConfiguration, FirebaseConfiguration>();
+        builder.Services.AddSingleton<IFirebaseRepository, FirebaseRepository>();
+        builder.Services.AddSingleton<IFirebaseConfiguration, FirebaseConfiguration>();
         builder.Services.AddSingleton<MainPage>();
 
 #if DEBUG
@@ -38,7 +35,7 @@ public static class MauiProgram
     private static MauiAppBuilder BuildConfiguration(this MauiAppBuilder builder)
     {
         var a = Assembly.GetExecutingAssembly();
-        using var stream = a.GetManifestResourceStream("BarrierOpener.Server.appsettings.json");
+        using var stream = a.GetManifestResourceStream("BarrierOpener.Client.appsettings.json");
 
         var config = new ConfigurationBuilder()
             .AddJsonStream(stream)

@@ -1,58 +1,60 @@
-﻿using BarrierOpener.Server.DataBase;
-using Firebase.Database;
-using Firebase.Database.Query;
-using System.Collections.ObjectModel;
-using BarrierOpener.Server.Services;
-using Firebase.Database.Streaming;
+﻿using System.Collections.ObjectModel;
+using BarrierOpener.Domain.Core;
+using BarrierOpener.Domain.DataBase;
+using BarrierOpener.Server.Core;
 
 namespace BarrierOpener.Server;
 
 public partial class MainPage : ContentPage
 {
-    private FirebaseClient _firebaseClient;
-    private string _resourceName = "action";
+    private readonly DateTime _applicationStartTime;
 
-    public ObservableCollection<BarrierActionMessage> Actions { get; set; } = new();
+    private readonly IPhoneDialerService _phoneService;
+    private readonly IFirebaseRepository _firebaseRepository;
+    private readonly IFirebaseConfiguration _configuration;
 
-    public MainPage()
+
+    public ObservableCollection<BarrierOpenMessage> Actions { get; set; } = new();
+
+    public MainPage(IPhoneDialerService phoneService,
+        IFirebaseRepository firebaseRepository,
+        IFirebaseConfiguration configuration)
     {
-        _firebaseClient = new FirebaseClient(baseUrl: "https://barrieropener-default-rtdb.firebaseio.com/");
+        _phoneService = phoneService;
+        _firebaseRepository = firebaseRepository;
+        _configuration = configuration;
+
+        _applicationStartTime = DateTime.Now;
 
         InitializeComponent();
 
         BindingContext = this;
 
-        var collection = _firebaseClient
-            .Child(_resourceName)
-            .AsObservable<BarrierActionMessage>()
-            .Subscribe(Listener);
+        _firebaseRepository.RegisterObserver<BarrierOpenMessage>(_configuration.ResourceName, Listener);
     }
-
-    private void Listener(FirebaseEvent<BarrierActionMessage> item)
+    
+    private bool Listener(BarrierOpenMessage message)
     {
-        if (item.Object != null)
+        if (message.SecretKey == _configuration.SecretKey && message.RequestDateTime > _applicationStartTime)
         {
-            Actions.Add(new BarrierActionMessage
-            {
-                Message = item.Object.Message + PhoneDialer.Default.IsSupported,
-            });
-
             if (PhoneDialer.Default.IsSupported)
             {
-                var dialer = new PhoneDialerService();
-                dialer.CallPhone("+375445837994");
+                _phoneService.CallPhone(_configuration.PhoneNumber);
             }
-            
         }
+
+        return true;
     }
 
-    private void OnCounterClicked(object sender, EventArgs e)
+    private void OnSendBtnClicked(object sender, EventArgs e)
     {
-        _firebaseClient.Child(_resourceName).PostAsync(new BarrierActionMessage
+        var message = new BarrierOpenMessage
         {
-            Message = TitleEntry.Text
-        });
-
-        TitleEntry.Text = string.Empty;
+            RequestDateTime = DateTime.UtcNow,
+            SecretKey = _configuration.SecretKey,
+            DeviceName =
+                $"{DeviceInfo.Current.Model};{DeviceInfo.Current.Name};{DeviceInfo.Current.Idiom}{DeviceInfo.Current.VersionString}"
+        };
+        _firebaseRepository.SendMessage(_configuration.ResourceName, message);
     }
 }

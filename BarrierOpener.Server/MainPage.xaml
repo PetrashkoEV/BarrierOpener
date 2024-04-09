@@ -2,31 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:server="clr-namespace:BarrierOpener.Server"
-             xmlns:dataBase="clr-namespace:BarrierOpener.Server.DataBase"
+             xmlns:dataBase="clr-namespace:BarrierOpener.Domain.DataBase;assembly=BarrierOpener.Domain"
              x:Class="BarrierOpener.Server.MainPage">
 
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
-
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-
-            <Entry x:Name="TitleEntry" Placeholder="Something to do..." />
 
             <Button
-                x:Name="CounterBtn"
+                x:Name="SenderBtn"
                 Text="Send Message" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                SemanticProperties.Hint="Send message to the queue"
+                Clicked="OnSendBtnClicked"
                 HorizontalOptions="Fill" />
 
             <CollectionView ItemsSource="{Binding Actions}" x:DataType="server:MainPage">
@@ -35,8 +23,8 @@
                         <Label
                             Padding="5"
                             FontSize="Medium"
-                            Text="{Binding Message}" 
-                            x:DataType="dataBase:BarrierActionMessage"/>
+                            Text="{Binding DeviceName}" 
+                            x:DataType="dataBase:BarrierOpenMessage"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

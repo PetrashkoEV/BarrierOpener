@@ -1,6 +1,8 @@
-﻿namespace BarrierOpener.Server.Services;
+﻿using BarrierOpener.Server.Core;
 
-public partial class PhoneDialerService
+namespace BarrierOpener.Server.Services;
+
+public partial class PhoneDialerService : IPhoneDialerService
 {
     public void CallPhone(string number)
     {

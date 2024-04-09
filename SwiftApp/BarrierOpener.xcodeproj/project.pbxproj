@@ -11,11 +11,11 @@
 		4C6A9E502BC1C6AC00AA7E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A9E4F2BC1C6AC00AA7E9A /* ContentView.swift */; };
 		4C6A9E522BC1C6AE00AA7E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6A9E512BC1C6AE00AA7E9A /* Assets.xcassets */; };
 		4C6A9E562BC1C6AE00AA7E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6A9E552BC1C6AE00AA7E9A /* Preview Assets.xcassets */; };
+		4CA05D962BC5993200CC37B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA05D952BC5993200CC37B8 /* GoogleService-Info.plist */; };
 		4CA654F82BC3EF7800B5EF0B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA654F72BC3EF7800B5EF0B /* FirebaseAnalytics */; };
 		4CA654FA2BC3EF7800B5EF0B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA654F92BC3EF7800B5EF0B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		4CA654FF2BC3F15700B5EF0B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA654FE2BC3F15700B5EF0B /* FirebaseFirestore */; };
 		4CA655052BC3F5C900B5EF0B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA655042BC3F5C900B5EF0B /* FirebaseAuth */; };
-		4CA655072BC3F7DD00B5EF0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA655062BC3F7DD00B5EF0B /* GoogleService-Info.plist */; };
 		4CA6550B2BC4111E00B5EF0B /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA6550A2BC4111E00B5EF0B /* FirebaseDatabase */; };
 		4CA655162BC447ED00B5EF0B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA655152BC447ED00B5EF0B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 		4C6A9E512BC1C6AE00AA7E9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6A9E532BC1C6AE00AA7E9A /* BarrierOpener.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BarrierOpener.entitlements; sourceTree = "<group>"; };
 		4C6A9E552BC1C6AE00AA7E9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4CA655062BC3F7DD00B5EF0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4CA05D952BC5993200CC37B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4CA655152BC447ED00B5EF0B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +67,7 @@
 		4C6A9E4C2BC1C6AC00AA7E9A /* BarrierOpener */ = {
 			isa = PBXGroup;
 			children = (
-				4CA655062BC3F7DD00B5EF0B /* GoogleService-Info.plist */,
+				4CA05D952BC5993200CC37B8 /* GoogleService-Info.plist */,
 				4C6A9E4D2BC1C6AC00AA7E9A /* BarrierOpenerApp.swift */,
 				4C6A9E4F2BC1C6AC00AA7E9A /* ContentView.swift */,
 				4C6A9E512BC1C6AE00AA7E9A /* Assets.xcassets */,
@@ -163,9 +163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6A9E562BC1C6AE00AA7E9A /* Preview Assets.xcassets in Resources */,
+				4CA05D962BC5993200CC37B8 /* GoogleService-Info.plist in Resources */,
 				4C6A9E522BC1C6AE00AA7E9A /* Assets.xcassets in Resources */,
 				4CA655162BC447ED00B5EF0B /* Launch Screen.storyboard in Resources */,
-				4CA655072BC3F7DD00B5EF0B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

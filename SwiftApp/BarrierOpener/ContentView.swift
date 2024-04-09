@@ -47,7 +47,7 @@ struct ContentView: View {
         let utcDate = NSDate() as Date
         let utcDateString = formatter.string(from: utcDate)
         
-        self._db.child("action").child(NSUUID().uuidString).setValue(["SecretKey": "1e7e5e8c-166b-411c-a16f-6bca38cf8dd6", "RequestDateTimeUts": utcDateString, "DeviceName": UIDevice.current.model])
+        self._db.child("action").child(NSUUID().uuidString).setValue(["SecretKey": "1e7e5e8c-166b-411c-a16f-6bca38cf8dd6", "RequestDateTime": utcDateString, "DeviceName": UIDevice.current.model])
     }
 }
 

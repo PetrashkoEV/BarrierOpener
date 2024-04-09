@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.vscode/launch.json
+BarrierOpener.Client/appsettings.json
+BarrierOpener.Client/appsettings.json

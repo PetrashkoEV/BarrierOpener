@@ -1,20 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:client="clr-namespace:BarrierOpener.Client"
+             xmlns:viewModel="clr-namespace:BarrierOpener.Client.ViewModels"
              x:Class="BarrierOpener.Client.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewModel:MainPageViewModel />
+    </ContentPage.BindingContext>
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
+            VerticalOptions="Center"
             Spacing="25">
-            
 
             <Button
                 x:Name="OpenerBtn"
-                Text="Open the barrier" 
-                SemanticProperties.Hint="Counts the number of times you click"
+                Text="OPEN" 
+                FontSize="20"
+                SemanticProperties.Hint="Open Barrier"
                 Clicked="OnOpenerClicked"
-                HorizontalOptions="Fill" />
+                WidthRequest="200"
+                HeightRequest="200"
+                CornerRadius="100" 
+                HorizontalOptions="Center"
+
+                Background="{Binding ButtonBrush}" 
+                IsEnabled="{Binding ButtonEnabled}"/>
         </VerticalStackLayout>
     </ScrollView>
 

@@ -31,11 +31,13 @@
 	<key>CFBundleDisplayName</key>
 	<string>Barrier Opener</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pevin.barrieropener</string>
+	<string>com.pevin.barrieropener.client</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
 </dict>
 </plist>

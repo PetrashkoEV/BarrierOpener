@@ -1,4 +1,4 @@
-﻿namespace BarrierOpener.Server.Core;
+﻿namespace BarrierOpener.Domain.Core;
 
 public interface IPhoneDialerService
 {

@@ -1,12 +1,11 @@
-﻿namespace BarrierOpener.Server
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿namespace BarrierOpener.Server;
 
-            MainPage = new AppShell();
-        }
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new AppShell();
     }
 }

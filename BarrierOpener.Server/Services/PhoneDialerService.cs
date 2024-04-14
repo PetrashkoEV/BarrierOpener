@@ -1,4 +1,4 @@
-﻿using BarrierOpener.Server.Core;
+﻿using BarrierOpener.Domain.Core;
 
 namespace BarrierOpener.Server.Services;
 

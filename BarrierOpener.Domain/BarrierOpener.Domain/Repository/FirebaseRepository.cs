@@ -8,9 +8,13 @@ public class FirebaseRepository : IFirebaseRepository
 {
     private readonly FirebaseClient _firebaseClient;
 
-    public FirebaseRepository(IFirebaseConfiguration configuration)
+    public FirebaseRepository(IFirebaseConfiguration configuration) : this(configuration.FirebaseDataBaseUrl)
     {
-        _firebaseClient = new FirebaseClient(baseUrl: configuration.FirebaseDataBaseUrl);
+    }
+
+    public FirebaseRepository(string baseUrl)
+    {
+        _firebaseClient = new FirebaseClient(baseUrl);
     }
 
     public void RegisterObserver<T>(string resourceName, Func<T, bool> messageHandler)

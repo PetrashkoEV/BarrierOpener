@@ -2,7 +2,6 @@
 using BarrierOpener.Domain.Configuration;
 using BarrierOpener.Domain.Core;
 using BarrierOpener.Domain.Repository;
-using BarrierOpener.Server.Core;
 using BarrierOpener.Server.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -22,6 +21,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             })
             .BuildConfiguration();
+
+        builder.Services.AddTransient<IBackgroundService, BackgroundService>();
 
         builder.Services.AddTransient<IPhoneDialerService, PhoneDialerService>();
         builder.Services.AddTransient<IFirebaseRepository, FirebaseRepository>();

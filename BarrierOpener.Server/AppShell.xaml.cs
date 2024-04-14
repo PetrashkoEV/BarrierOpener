@@ -1,10 +1,9 @@
-﻿namespace BarrierOpener.Server
+﻿namespace BarrierOpener.Server;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

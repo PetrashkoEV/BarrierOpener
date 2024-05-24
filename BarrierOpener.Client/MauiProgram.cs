@@ -4,6 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using BarrierOpener.Domain.Configuration;
+using BarrierOpener.Domain.Factory;
+using Firebase.Auth;
+using Firebase.Auth.Providers;
 
 namespace BarrierOpener.Client;
 
@@ -21,8 +24,19 @@ public static class MauiProgram
             })
             .BuildConfiguration();
 
+        builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig
+        {
+            ApiKey = "AIzaSyA8K_ktLrpLbL73o0MO0whm8m8AEBt-pjU",
+            AuthDomain = "barrieropener.firebaseapp.com",
+            Providers =
+            [
+                new EmailProvider()
+            ]
+        }));
+
         builder.Services.AddSingleton<IFirebaseRepository, FirebaseRepository>();
         builder.Services.AddSingleton<IFirebaseConfiguration, FirebaseConfiguration>();
+        builder.Services.AddSingleton<IFirebaseClientFactory, FirebaseClientFactory>();
         builder.Services.AddSingleton<MainPage>();
 
 #if DEBUG

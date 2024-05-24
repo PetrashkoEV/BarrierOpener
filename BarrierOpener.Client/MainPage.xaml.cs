@@ -32,7 +32,6 @@ public partial class MainPage : ContentPage
         var message = new BarrierOpenMessage
         {
             RequestDateTime = DateTime.UtcNow,
-            SecretKey = _configuration.SecretKey,
             DeviceName =
                 $"{DeviceInfo.Current.Model};{DeviceInfo.Current.Name};{DeviceInfo.Current.Idiom}{DeviceInfo.Current.VersionString}"
         };

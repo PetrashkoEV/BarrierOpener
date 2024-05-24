@@ -1,9 +1,12 @@
 ﻿using System.Reflection;
 using BarrierOpener.Domain.Configuration;
 using BarrierOpener.Domain.Core;
+using BarrierOpener.Domain.Factory;
 using BarrierOpener.Domain.Repository;
 using BarrierOpener.Server.Core;
 using BarrierOpener.Server.Services;
+using Firebase.Auth;
+using Firebase.Auth.Providers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -23,9 +26,21 @@ public static class MauiProgram
             })
             .BuildConfiguration();
 
+        builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
+        {
+            ApiKey = "AIzaSyA8K_ktLrpLbL73o0MO0whm8m8AEBt-pjU",
+            AuthDomain = "barrieropener.firebaseapp.com",
+            Providers =
+            [
+                new EmailProvider()
+            ]
+        }));
+
         builder.Services.AddTransient<IPhoneDialerService, PhoneDialerService>();
+        builder.Services.AddSingleton<IFirebaseListenerService, FirebaseListenerService>();
         builder.Services.AddTransient<IFirebaseRepository, FirebaseRepository>();
         builder.Services.AddTransient<IFirebaseConfiguration, FirebaseConfiguration>();
+        builder.Services.AddSingleton<IFirebaseClientFactory, FirebaseClientFactory>();
         builder.Services.AddSingleton<MainPage>();
 
 #if DEBUG

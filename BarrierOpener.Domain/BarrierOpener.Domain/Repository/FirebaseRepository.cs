@@ -6,16 +6,19 @@ namespace BarrierOpener.Domain.Repository;
 
 public class FirebaseRepository : IFirebaseRepository
 {
-    private readonly FirebaseClient _firebaseClient;
+    private readonly IFirebaseClientFactory _clientFactory;
 
-    public FirebaseRepository(IFirebaseConfiguration configuration)
+    private FirebaseClient? _firebaseClient;
+    private FirebaseClient FirebaseClient => _firebaseClient ??= _clientFactory.GetClient();
+
+    public FirebaseRepository(IFirebaseClientFactory clientFactory)
     {
-        _firebaseClient = new FirebaseClient(baseUrl: configuration.FirebaseDataBaseUrl);
+        _clientFactory = clientFactory;
     }
 
     public void RegisterObserver<T>(string resourceName, Func<T, bool> messageHandler)
     {
-        _firebaseClient
+        FirebaseClient
             .Child(resourceName)
             .AsObservable<T>()
             .Subscribe(item =>
@@ -25,13 +28,13 @@ public class FirebaseRepository : IFirebaseRepository
                     toDeleteIt = messageHandler(item.Object);
                 
                 if(toDeleteIt)
-                    _firebaseClient.Child(resourceName).Child(item.Key).DeleteAsync().GetAwaiter().GetResult();
+                    FirebaseClient.Child(resourceName).Child(item.Key).DeleteAsync().GetAwaiter().GetResult();
             });
     }
 
     public void SendMessage<T>(string resourceName, T message)
     {
-        _firebaseClient.Child(resourceName)
+        FirebaseClient.Child(resourceName)
             .PostAsync(message)
             .GetAwaiter().GetResult();
     }

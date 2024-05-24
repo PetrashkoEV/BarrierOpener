@@ -1,12 +1,15 @@
-﻿namespace BarrierOpener.Server
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿using BarrierOpener.Server.Core;
 
-            MainPage = new AppShell();
-        }
+namespace BarrierOpener.Server;
+
+public partial class App : Application
+{
+    public App(IFirebaseListenerService listener)
+    {
+        InitializeComponent();
+        
+        listener.RegisterListener(DateTime.UtcNow);
+
+        MainPage = new AppShell();
     }
 }

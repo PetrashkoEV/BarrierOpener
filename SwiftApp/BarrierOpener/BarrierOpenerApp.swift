@@ -15,6 +15,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
+      Auth.auth().signIn(withEmail: "clientbarrieropener@gmail.com", password: "") { authResult, error in
+          if let error = error{
+              print(error.localizedDescription)
+          }
+      }
 
     return true
   }

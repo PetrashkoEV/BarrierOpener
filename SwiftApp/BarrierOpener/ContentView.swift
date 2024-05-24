@@ -49,11 +49,17 @@ struct ContentView: View {
     }
     
     func OppenBarrierClickTask() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let utcDateString = formatter.string(from: Date())
+        let utcDateString = getCurrentUTCdate()
         
-        _db.child("action").child(NSUUID().uuidString).setValue(["SecretKey": "1e7e5e8c-166b-411c-a16f-6bca38cf8dd6", "RequestDateTime": utcDateString, "DeviceName": UIDevice.current.model])
+        _db.child("action").child(NSUUID().uuidString).setValue(["RequestDateTime": utcDateString, "DeviceName": UIDevice.current.model])
+    }
+    
+    func getCurrentUTCdate() -> String{
+        let currentDate = Date()
+        let formater = DateFormatter()
+        formater.timeZone = TimeZone(abbreviation: "UTC")
+        formater.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formater.string(from: currentDate)
     }
 }
 

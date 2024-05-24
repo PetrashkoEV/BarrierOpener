@@ -11,6 +11,7 @@
 		4C6A9E502BC1C6AC00AA7E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A9E4F2BC1C6AC00AA7E9A /* ContentView.swift */; };
 		4C6A9E522BC1C6AE00AA7E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6A9E512BC1C6AE00AA7E9A /* Assets.xcassets */; };
 		4C6A9E562BC1C6AE00AA7E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6A9E552BC1C6AE00AA7E9A /* Preview Assets.xcassets */; };
+		4C9C1D2C2BE16D04008E7EC1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4C9C1D2B2BE16D04008E7EC1 /* FirebaseStorage */; };
 		4CA05D962BC5993200CC37B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA05D952BC5993200CC37B8 /* GoogleService-Info.plist */; };
 		4CA654F82BC3EF7800B5EF0B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA654F72BC3EF7800B5EF0B /* FirebaseAnalytics */; };
 		4CA654FA2BC3EF7800B5EF0B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA654F92BC3EF7800B5EF0B /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -41,6 +42,7 @@
 				4CA654FF2BC3F15700B5EF0B /* FirebaseFirestore in Frameworks */,
 				4CA654F82BC3EF7800B5EF0B /* FirebaseAnalytics in Frameworks */,
 				4CA654FA2BC3EF7800B5EF0B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				4C9C1D2C2BE16D04008E7EC1 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +117,7 @@
 				4CA654FE2BC3F15700B5EF0B /* FirebaseFirestore */,
 				4CA655042BC3F5C900B5EF0B /* FirebaseAuth */,
 				4CA6550A2BC4111E00B5EF0B /* FirebaseDatabase */,
+				4C9C1D2B2BE16D04008E7EC1 /* FirebaseStorage */,
 			);
 			productName = BarrierOpener;
 			productReference = 4C6A9E4A2BC1C6AC00AA7E9A /* BarrierOpener.app */;
@@ -307,6 +310,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BarrierOpener/BarrierOpener.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BarrierOpener/Preview Content\"";
@@ -328,7 +332,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -355,6 +359,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BarrierOpener/BarrierOpener.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BarrierOpener/Preview Content\"";
@@ -376,7 +381,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -428,6 +433,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4C9C1D2B2BE16D04008E7EC1 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CA654F62BC3EF7800B5EF0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		4CA654F72BC3EF7800B5EF0B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4CA654F62BC3EF7800B5EF0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
